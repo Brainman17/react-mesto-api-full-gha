@@ -1,0 +1,23 @@
+.homepage__container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    min-height: min-content;
+}
+
+.homepage__container:nth-child(2) {
+    margin-top: 30px;
+    margin-bottom: 216px;
+}
+
+@media screen and (max-width: 650px) {
+    .homepage__container {
+        margin-top: 75px;
+    }
+
+    .homepage__container:nth-last-child(2) {
+        margin-bottom: 45px;
+    }
+}

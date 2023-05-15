@@ -1,0 +1,6 @@
+@media screen and (max-width: 880px) {
+  .header__logo {
+    transform: scale(0.7);
+  }
+}
+

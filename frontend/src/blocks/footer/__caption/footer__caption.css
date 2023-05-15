@@ -1,0 +1,19 @@
+.footer__caption {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block;
+  letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 640px) {
+  .footer__caption {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

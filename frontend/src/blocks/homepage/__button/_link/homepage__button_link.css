@@ -1,0 +1,9 @@
+.homepage__button_link {
+    font-family: 'Inter', Arial, sans-serif;
+    text-decoration:none;
+    color:#FFFFFF;
+}
+
+.homepage__button_link:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,10 @@
+.page__content {
+  padding: 40px 0 66px;
+}
+
+@media screen and (max-width: 990px) {
+  .page__content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

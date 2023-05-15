@@ -1,0 +1,11 @@
+.popup__button {
+    margin-top: 17px;
+}
+
+.popup__button:disabled {
+  cursor: default;
+}
+
+.popup__button:hover {
+  cursor: pointer;
+}

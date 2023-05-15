@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base"
+  ],
+  "rules": {
+    "no-underscore-dangle": ["error", { "allow": ["_id"]}]
+  },
+  "env": {
+    "node": true,
+    "es2021": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}]
+}
+

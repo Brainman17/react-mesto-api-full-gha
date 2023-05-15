@@ -1,0 +1,10 @@
+.card__heart-button_active {
+    background: url(../../../../images/heart-active.svg) center no-repeat;
+    overflow: hidden;
+    object-fit: cover;
+    border: none;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+  }
+

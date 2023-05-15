@@ -1,0 +1,20 @@
+.homepage__heading {
+    font-family: 'Inter', Arial, sans-serif;
+    color:#FFFFFF;
+    margin-top: 60px;
+    text-align: center;
+    font-style: normal;
+    margin-bottom: 50px;
+    line-height: 29px;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 650px) {
+    .homepage__heading {
+        margin-top: 25px;
+        margin-left: 22px;
+        margin-right: 22px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

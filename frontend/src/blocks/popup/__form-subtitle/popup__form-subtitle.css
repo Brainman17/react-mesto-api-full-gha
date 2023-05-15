@@ -1,0 +1,38 @@
+.popup__form-subtitle {
+  width: 100%;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: none;
+  padding-bottom: 8px;
+  margin-bottom: 29px;
+  word-spacing: 3px;
+  color: #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.popup__form-subtitle::placeholder {
+  color: #c4c4c4;
+}
+
+.popup__form-subtitle:focus {
+  outline: none;
+}
+
+.popup__form-subtitle:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media  screen and (max-width: 640px) {
+  .popup__form-subtitle {
+    margin-bottom: 30px;
+    letter-spacing: 0px;
+  }
+  .popup__form-subtitle:nth-child(2) {
+    margin-bottom: 31px;
+  }
+}
+
+
