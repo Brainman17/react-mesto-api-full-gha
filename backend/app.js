@@ -1,6 +1,5 @@
 const express = require('express');
-const { errors } = require('celebrate');
-const { cors } = require('cors');
+
 
 const app = express();
 const mongoose = require('mongoose');
@@ -8,6 +7,7 @@ const mongoose = require('mongoose');
 const { PORT = 3000 } = process.env;
 const { userRouter } = require('./routes/users');
 const { cardRouter } = require('./routes/cards');
+const { errors } = require('celebrate');
 const { login, createUser } = require('./controllers/auth');
 const { auth } = require('./middlewares/auth');
 const celebrates = require('./middlewares/celebrates');
@@ -18,7 +18,6 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 app.use(express.json());
-app.use(cors());
 app.use(requestLogger); // подключаем логгер запросов
 
 // за ним идут все обработчики роутов
