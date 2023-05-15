@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require('cors');
+const cors = require('cors');
 const { errors } = require('celebrate');
 
 const app = express();
@@ -16,10 +16,9 @@ const { NotFoundError } = require('./errors/customErrors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
-// app.use(cors())
 
 app.use(express.json());
-
+app.use(cors());
 app.use(requestLogger); // подключаем логгер запросов
 
 // за ним идут все обработчики роутов
