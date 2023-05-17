@@ -1,11 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 const mongoose = require('mongoose');
 
-const { PORT = 3000 } = process.env;
+const { PORT } = require('./config');
 const { userRouter } = require('./routes/users');
 const { cardRouter } = require('./routes/cards');
 const { errors } = require('celebrate');
@@ -34,7 +33,7 @@ app.get('/crash-test', () => { //краш-тест
 app.post('/signin', celebrates.signIn, login);
 app.post('/signup', celebrates.signUp, createUser);
 
-//app.use(auth);
+app.use(auth);
 
 app.use(userRouter);
 app.use(cardRouter);
