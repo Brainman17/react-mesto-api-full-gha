@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 const mongoose = require('mongoose');
@@ -22,6 +23,12 @@ app.use(cors());
 app.use(express.json());
 
 app.use(requestLogger); // подключаем логгер запросов
+
+app.get('/crash-test', () => { //краш-тест
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 // за ним идут все обработчики роутов
 app.post('/signin', celebrates.signIn, login);
@@ -50,3 +57,4 @@ app.listen(PORT, () => {
 // cloud-jegor-andreichuk - облако
 
 // ssh jegor-andreychuk@158.160.57.251
+

@@ -4,12 +4,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/Brainman17/react-mesto-api-full-gha.git
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.57.251
 
-Frontend https://...
+Frontend https://jegor-andreychuk.students.nomoredomains.monster
 
-Backend https://...
+Backend https://jegor-andreychuk.yandex.nomoredomains.monster (Был бы у меня еще один шанс выбрать более правильный домен для бэкенда, я бы им воспользовался)
