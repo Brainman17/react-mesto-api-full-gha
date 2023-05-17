@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "https://jegor-andreychuk.yandex.nomoredomains.monster";
 
 function makeRequest(url, method, body, token) {
   const headers = {
