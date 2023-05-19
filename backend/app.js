@@ -5,7 +5,7 @@ require('dotenv').config();
 const app = express();
 const mongoose = require('mongoose');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3002 } = process.env;
 const { userRouter } = require('./routes/users');
 const { cardRouter } = require('./routes/cards');
 const { errors } = require('celebrate');
@@ -58,3 +58,4 @@ app.listen(PORT, () => {
 
 // ssh jegor-andreychuk@158.160.57.251
 
+// токен eb28135ebcfc17578f96d4d65b6c7871f2c803be4180c165061d5c2db621c52c
