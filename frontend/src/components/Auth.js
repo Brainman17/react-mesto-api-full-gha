@@ -2,7 +2,7 @@ export const BASE_URL = "https://jegor-andreychuk.yandex.nomoredomains.monster";
 
 function makeRequest(url, method, body, token) {
   const headers = {
-    Accept: "application/json",
+    "Accept": "application/json",
     "Content-Type": "application/json",
   };
 
