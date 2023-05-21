@@ -5,7 +5,7 @@ require('dotenv').config();
 const app = express();
 const mongoose = require('mongoose');
 
-const { PORT = 3002 } = process.env;
+const { PORT = 3000 } = process.env;
 const { userRouter } = require('./routes/users');
 const { cardRouter } = require('./routes/cards');
 const { errors } = require('celebrate');
@@ -17,6 +17,14 @@ const { NotFoundError } = require('./errors/customErrors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+
+// const corsOptions = {
+//   origin: '*',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   allowedHeaders: ['Content-type', 'Authorization'],
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204
+// }
 
 app.use(cors());
 
