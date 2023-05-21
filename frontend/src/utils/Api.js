@@ -11,7 +11,6 @@ class Api {
   getInitialCards() {
     return fetch(this._baseUrl + "/cards", {
       method: "GET",
-      credentials: "include",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
@@ -22,7 +21,6 @@ class Api {
   getUserInfo() {
     return fetch(this._baseUrl + "/users/me", {
       method: "GET",
-      credentials: "include",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
@@ -33,7 +31,6 @@ class Api {
   editUserInfo(name, about) {
     return fetch(this._baseUrl + "/users/me", {
       method: "PATCH",
-      credentials: "include",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
@@ -48,7 +45,6 @@ class Api {
   postCreateCard(name, link) {
     return fetch(this._baseUrl + "/cards", {
       method: "POST",
-      credentials: "include",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
@@ -63,7 +59,6 @@ class Api {
   deleteInitialCards(_id) {
     return fetch(this._baseUrl + "/cards/" + _id, {
       method: "DELETE",
-      credentials: "include",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
@@ -74,7 +69,6 @@ class Api {
   changeLikeCardStatus(_id, isLiked) {
     return fetch(this._baseUrl + "/cards/" + _id + "/likes", {
       method: isLiked ? 'DELETE' : 'PUT',
-      credentials: "include",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
@@ -85,7 +79,6 @@ class Api {
   updateAvatar(avatar) {
     return fetch(this._baseUrl + "/users/me/avatar", {
       method: "PATCH",
-      credentials: "include",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
@@ -98,7 +91,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://localhost:3002"
+  baseUrl: "http://localhost:3000"
 });
 
 export default api;
