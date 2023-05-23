@@ -1,11 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 const mongoose = require('mongoose');
 
-const { PORT = 3000 } = process.env;
+const { PORT, DB_ADDRESS } = require('./config');
 const { userRouter } = require('./routes/users');
 const { cardRouter } = require('./routes/cards');
 const { errors } = require('celebrate');
@@ -16,7 +15,7 @@ const centralErrorHandler = require('./middlewares/centralErrorHandler');
 const { NotFoundError } = require('./errors/customErrors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(DB_ADDRESS, { useNewUrlParser: true });
 
 // const corsOptions = {
 //   origin: '*',
@@ -27,6 +26,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 // }
 
 app.use(cors());
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use(express.json());
 
@@ -62,8 +71,6 @@ app.listen(PORT, () => {
   console.log(`Application listening on ${PORT}!`);
 });
 
-// cloud-jegor-andreichuk - облако
+
 
 // ssh jegor-andreychuk@158.160.57.251
-
-// токен eb28135ebcfc17578f96d4d65b6c7871f2c803be4180c165061d5c2db621c52c
