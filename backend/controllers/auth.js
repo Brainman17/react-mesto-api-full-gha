@@ -2,7 +2,7 @@ const user = require("../models/users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { STATUS_CREATED } = require("../utils/constants");
-const { NODE_ENV, JWT_SECRET } = require('../config');
+const { SECRET } = require('../config');
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
@@ -10,7 +10,7 @@ const login = (req, res, next) => {
   return user
     .findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', {
+      const token = jwt.sign({ _id: user._id }, SECRET, {
         expiresIn: "7d",
       });
 

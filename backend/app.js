@@ -74,3 +74,5 @@ app.listen(PORT, () => {
 
 
 // ssh jegor-andreychuk@158.160.57.251
+// NODE_ENV=production
+// JWT_SECRET='dev-secret'

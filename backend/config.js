@@ -5,7 +5,7 @@ const { PORT = 3001 } = process.env;
 const { DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 module.exports = {
-  JWT_SECRET,
+  SECRET: NODE_ENV === 'production'  && JWT_SECRET ? JWT_SECRET : 'hardcoded-dev-secret',
   NODE_ENV,
   PORT,
   DB_ADDRESS,
