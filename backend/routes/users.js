@@ -5,7 +5,7 @@ const celebrates = require('../middlewares/celebrates');
 
 userRouter.get('/users', getUsers);
 
-userRouter.get('users/me', getMe)
+userRouter.get('users/me', getUsers)
 
 userRouter.get('/users/:userId', celebrates.getUser,  getUser);
 
