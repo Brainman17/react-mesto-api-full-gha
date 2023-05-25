@@ -16,6 +16,8 @@ function Main({
   onLogout,
 }) {
   const currentUser = useContext(CurrentUserContext);
+  // cards = Array.from(cards);
+  const cardsArray = Object.values(cards);
 
   return (
     <>
@@ -56,11 +58,11 @@ function Main({
           ></button>
         </section>
         <section className="cards page__cards" aria-label="Блок с карточками">
-          {cards.map((card) => {
+          {cardsArray.map((card) => {
             return (
               <Card
-                key={card._id}
                 card={card}
+                key={card._id}
                 src={card.link}
                 title={card.name}
                 like={card.likes}
