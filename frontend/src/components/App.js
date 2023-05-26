@@ -96,7 +96,7 @@ function App() {
       }
 
       setIsLoggedIn(true);
-      setEmail(user.email);
+      setEmail(user.email && user.data.email);
       navigate("/");
     } catch (e) {
       console.error(e);

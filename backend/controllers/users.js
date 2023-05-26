@@ -71,7 +71,7 @@ const updateAvatar = (req, res, next) => {
 module.exports = {
   getUsers,
   getUser,
-  getMe,
+  // getMe,
   updateUser,
   updateAvatar,
 };

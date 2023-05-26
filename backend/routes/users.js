@@ -1,11 +1,13 @@
 const express = require('express');
 const userRouter = express.Router();
-const { getUsers, getUser, getMe, updateUser, updateAvatar } = require('../controllers/users');
+const { getUsers, getUser, updateUser, updateAvatar } = require('../controllers/users');
 const celebrates = require('../middlewares/celebrates');
 
 userRouter.get('/users', getUsers);
 
-userRouter.get('users/me', getUsers)
+userRouter.get('/users/me', getUsers)
+
+// userRouter.get('/users/me', getMe);
 
 userRouter.get('/users/:userId', celebrates.getUser,  getUser);
 
