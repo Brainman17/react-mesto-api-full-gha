@@ -5,7 +5,7 @@ const getUsers = (req, res, next) => {
   user
     .find({})
     .then((users) => {
-      res.send({ data: users });
+      res.send(users);
     })
     .catch((err) => next(err));
 };
@@ -19,24 +19,24 @@ const getUser = (req, res, next) => {
       throw new NotFoundError('Такого пользователя не существует');
     })
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => next(err));
 };
 
-// const getMe = (req, res, next) => {
-//   const { userId } = req.params;
+const getCurrentUser = (req, res, next) => {
+  const { userId } = req.user;
 
-//   user
-//     .findById(userId)
-//     .orFail(() => {
-//       throw new NotFoundError('Такого пользователя не существует');
-//     })
-//     .then((user) => {
-//       res.send({ data: user });
-//     })
-//     .catch((err) => next(err));
-// };
+  user
+    .findById(userId)
+    .orFail(() => {
+      throw new NotFoundError('Такого пользователя не существует');
+    })
+    .then((user) => {
+      res.send(user);
+    })
+    .catch((err) => next(err));
+};
 
 const updateUser = (req, res, next) => {
   const userId = req.user._id;
@@ -71,7 +71,7 @@ const updateAvatar = (req, res, next) => {
 module.exports = {
   getUsers,
   getUser,
-  // getMe,
+  getCurrentUser,
   updateUser,
   updateAvatar,
 };

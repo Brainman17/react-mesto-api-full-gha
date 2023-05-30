@@ -90,7 +90,7 @@ function App() {
       }
 
       const user = await Auth.getContent(jwt);
-      console.log(user);
+      // console.log(user);
       if (!user) {
         throw new Error("No User");
       }
