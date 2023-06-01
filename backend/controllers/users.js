@@ -25,10 +25,10 @@ const getUser = (req, res, next) => {
 };
 
 const getCurrentUser = (req, res, next) => {
-  const { userId } = req.user;
+  const { _id } = req.user;
 
   user
-    .findById(userId)
+    .findById(_id)
     .orFail(() => {
       throw new NotFoundError('Такого пользователя не существует');
     })

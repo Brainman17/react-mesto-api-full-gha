@@ -17,7 +17,7 @@ function Main({
 }) {
   const currentUser = useContext(CurrentUserContext);
   // cards = Array.from(cards);
-  const cardsArray = Object.values(cards);
+  // const cardsArray = Object.values(cards);
 
   return (
     <>
@@ -58,7 +58,7 @@ function Main({
           ></button>
         </section>
         <section className="cards page__cards" aria-label="Блок с карточками">
-          {cardsArray.map((card) => {
+          {cards.map((card) => {
             return (
               <Card
                 card={card}

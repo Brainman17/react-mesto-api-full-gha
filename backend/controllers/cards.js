@@ -5,6 +5,7 @@ const { STATUS_CREATED } = require("../utils/constants");
 const getCards = (req, res, next) => {
   card
     .find({})
+    .populate(['owner', 'likes'])
     .then((cards) => {
       res.send({ data: cards });
     })
@@ -19,6 +20,7 @@ const createCard = (req, res, next) => {
 
   card
     .create({ name, link, owner })
+    .then(card => card.populate(['owner']))
     .then((card) => {
       res.status(STATUS_CREATED).send({ data: card });
     })
@@ -53,6 +55,7 @@ const likeCard = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError("Карточка с таким id не существует!")
     })
+    .populate(['owner', 'likes'])
     .then((card) =>  {
       res.send({ data: card })
     })
@@ -71,6 +74,7 @@ const dislikeCard = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError("Карточка с таким id не существует!")
     })
+    .populate(['owner', 'likes'])
     .then((card) =>  {
       res.send({ data: card })
     })

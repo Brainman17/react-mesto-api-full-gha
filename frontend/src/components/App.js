@@ -84,19 +84,19 @@ function App() {
   const cbTokenCheck = useCallback(async () => {
     try {
       const jwt = localStorage.getItem("jwt");
-      console.log(jwt);
+
       if (!jwt) {
         return;
       }
 
       const user = await Auth.getContent(jwt);
-      // console.log(user);
+
       if (!user) {
         throw new Error("No User");
       }
 
       setIsLoggedIn(true);
-      setEmail(user.email && user.data.email);
+      setEmail(user.email);
       navigate("/");
     } catch (e) {
       console.error(e);
@@ -129,10 +129,11 @@ function App() {
     api
       .getInitialCards()
       .then((cards) => {
-        setCards(cards);
+        // console.log(cards);
+        setCards(cards.data);
       })
       .catch(console.log);
-  }, []);
+  }, [isLoggedIn]);
 
   function ChooseInfoTooltip(info) {
     setInfo({ image: info.image, text: info.text });
