@@ -57,6 +57,7 @@ class Api {
   }
 
   deleteInitialCards(_id) {
+    console.log(_id)
     return fetch(this._baseUrl + "/cards/" + _id, {
       method: "DELETE",
       headers: {

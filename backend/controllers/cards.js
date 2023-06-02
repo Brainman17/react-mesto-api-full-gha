@@ -7,7 +7,7 @@ const getCards = (req, res, next) => {
     .find({})
     .populate(['owner', 'likes'])
     .then((cards) => {
-      res.send({ data: cards });
+      res.send(cards);
     })
     .catch((err) => {
       next(err)
@@ -22,7 +22,7 @@ const createCard = (req, res, next) => {
     .create({ name, link, owner })
     .then(card => card.populate(['owner']))
     .then((card) => {
-      res.status(STATUS_CREATED).send({ data: card });
+      res.status(STATUS_CREATED).send(card);
     })
     .catch((err) => {
       next(err)
@@ -36,7 +36,7 @@ const deleteCard = (req, res, next) => {
       throw new NotFoundError("Карточка с таким id не существует!")
     })
     .then((card) => {
-      res.send({ data: card })
+      res.send(card)
     })
     .catch((err) => {
       next(err)
@@ -57,7 +57,7 @@ const likeCard = (req, res, next) => {
     })
     .populate(['owner', 'likes'])
     .then((card) =>  {
-      res.send({ data: card })
+      res.send(card)
     })
     .catch((err) => next(err));
 };
@@ -76,7 +76,7 @@ const dislikeCard = (req, res, next) => {
     })
     .populate(['owner', 'likes'])
     .then((card) =>  {
-      res.send({ data: card })
+      res.send(card)
     })
     .catch((err) => {
       next(err);

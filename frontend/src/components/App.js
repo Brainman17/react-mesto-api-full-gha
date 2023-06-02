@@ -150,7 +150,9 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
+
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    console.log(isLiked)
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
@@ -160,7 +162,7 @@ function App() {
           state.map((c) => (c._id === card._id ? newCard : c))
         );
       })
-      .catch(console.log);
+      .catch(err => console.log(err));
   }
 
   function handleUpdateUser({ name, about }) {
@@ -195,7 +197,7 @@ function App() {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
-      .catch(console.log)
+      .catch(err => console.log(err))
       .finally(() => setIsLoading(false));
   }
 
