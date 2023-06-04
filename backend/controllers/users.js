@@ -5,7 +5,7 @@ const getUsers = (req, res, next) => {
   user
     .find({})
     .then((users) => {
-      res.send(users);
+      res.send({ data: users });
     })
     .catch((err) => next(err));
 };
@@ -19,7 +19,7 @@ const getUser = (req, res, next) => {
       throw new NotFoundError('Такого пользователя не существует');
     })
     .then((user) => {
-      res.send(user);
+      res.send({ data: user });
     })
     .catch((err) => next(err));
 };
@@ -33,7 +33,7 @@ const getCurrentUser = (req, res, next) => {
       throw new NotFoundError('Такого пользователя не существует');
     })
     .then((user) => {
-      res.send(user);
+      res.send({ data: user });
     })
     .catch((err) => next(err));
 };

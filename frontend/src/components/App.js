@@ -27,7 +27,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [info, setInfo] = useState({ image: "", text: "" });
-  const [email, setEmail] = useState({ email: ""});
+  const [email, setEmail] = useState({ email: "" });
   const [loading, setLoading] = useState(true);
   const [showTooltip, setShowTooltip] = useState(false);
   const navigate = useNavigate();
@@ -117,22 +117,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    api
-      .getUserInfo()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch(console.log);
-  }, []);
+    if (isLoggedIn) {
+      setIsLoading(true);
 
-  useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cards) => {
-        // console.log(cards);
-        setCards(cards.data);
-      })
-      .catch(console.log);
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([user, cards]) => {
+          setCurrentUser(user.data);
+          setCards(cards.data);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setIsLoading(false);
+        })
+    };
   }, [isLoggedIn]);
 
   function ChooseInfoTooltip(info) {
@@ -152,7 +149,6 @@ function App() {
     // Снова проверяем, есть ли уже лайк на этой карточке
 
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    console.log(isLiked)
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
@@ -169,8 +165,8 @@ function App() {
     setIsLoading(true);
     api
       .editUserInfo(name, about)
-      .then((res) => {
-        setCurrentUser(res);
+      .then((user) => {
+        setCurrentUser(user.data);
         closeAllPopups();
       })
       .catch(console.log)
@@ -181,8 +177,8 @@ function App() {
     setIsLoading(true);
     api
       .updateAvatar(avatar)
-      .then((res) => {
-        setCurrentUser(res);
+      .then((avatar) => {
+        setCurrentUser(avatar.data);
         closeAllPopups();
       })
       .catch(console.log)
@@ -194,7 +190,7 @@ function App() {
     api
       .postCreateCard(name, link)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch(err => console.log(err))

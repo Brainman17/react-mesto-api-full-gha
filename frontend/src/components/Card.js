@@ -7,7 +7,7 @@ function Card({ card, title, like, src, ...props }) {
   // console.log('card =>', card);
   // console.log('currentUser =>', currentUser);
   
-  const isOwn = card._id === currentUser._id;
+  const isOwn = card.owner._id === currentUser._id;
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
   const cardLikeButtonClassName = `card__heart-button ${

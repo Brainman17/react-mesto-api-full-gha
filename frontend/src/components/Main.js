@@ -18,6 +18,7 @@ function Main({
   const currentUser = useContext(CurrentUserContext);
   // cards = Array.from(cards);
   // const cardsArray = Object.values(cards);
+  // console.log(cards)
 
   return (
     <>
