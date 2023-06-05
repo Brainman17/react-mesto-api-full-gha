@@ -94,9 +94,8 @@ function App() {
       if (!user) {
         throw new Error("No User");
       }
-
       setIsLoggedIn(true);
-      setEmail(user.email);
+      setEmail(user.data.email);
       navigate("/");
     } catch (e) {
       console.error(e);
@@ -153,9 +152,9 @@ function App() {
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card._id, isLiked)
-      .then((newCard) => {
+      .then((like) => {
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map((c) => (c._id === card._id ? like.data : c))
         );
       })
       .catch(err => console.log(err));
