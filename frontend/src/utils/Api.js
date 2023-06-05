@@ -91,7 +91,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://127.0.0.1:3005"
+  baseUrl: "https://jegor-andreychuk.yandex.nomoredomains.monster"
 });
 
 export default api;
