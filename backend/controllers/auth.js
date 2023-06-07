@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const user = require('../models/users');
 const { STATUS_CREATED, ERROR_CONFLICT } = require('../utils/constants');
 const { ConflictError } = require('../errors/customErrors');
-const { SECRET } = require('../config');
+const { key } = require('../config');
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
@@ -12,7 +12,7 @@ const login = (req, res, next) => {
   return user
     .findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, SECRET, {
+      const token = jwt.sign({ _id: user._id }, key, {
         expiresIn: '7d',
       });
 
@@ -34,11 +34,8 @@ const createUser = (req, res, next) => {
     .then((user) => res.status(STATUS_CREATED).send(user))
     .catch((err) => {
       if (err.code === 11000) {
-        // return res
-        //   .status(ERROR_CONFLICT)
-        //   .send({ message: 'Пользователь с такой почтой уже существует' });
         return next(new ConflictError('Пользователь с такой почтой уже существует'));
-      } return next(err)
+      } return next(err.message)
     });
 };
 

@@ -65,13 +65,7 @@ const likeCard = (req, res, next) => {
     .then((card) => {
       res.send({ data: card });
     })
-    .catch((err) => {
-      if (err.code === 11000) {
-        return res
-          .status(ERROR_CONFLICT)
-          .send({ message: 'Пользователь с такой почтой уже существует' });
-      } return next(err)
-    });
+    .catch((err) => next(err));
 };
 
 const dislikeCard = (req, res, next) => {

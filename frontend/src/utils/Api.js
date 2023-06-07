@@ -93,5 +93,5 @@ class Api {
 const api = new Api({
   baseUrl: "https://jegor-andreychuk.yandex.nomoredomains.monster"
 });
-
+// "https://jegor-andreychuk.yandex.nomoredomains.monster"
 export default api;

@@ -1,4 +1,5 @@
 export const BASE_URL = "https://jegor-andreychuk.yandex.nomoredomains.monster";
+// "https://jegor-andreychuk.yandex.nomoredomains.monster"
 
 function makeRequest(url, method, body, token) {
   const headers = {
