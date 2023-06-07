@@ -37,7 +37,7 @@ const createUser = (req, res, next) => {
         // return res
         //   .status(ERROR_CONFLICT)
         //   .send({ message: 'Пользователь с такой почтой уже существует' });
-        return next(new ConflictError('Пользователь с такой почтой уже зарегистрирован'));
+        return next(new ConflictError('Пользователь с такой почтой уже существует'));
       } return next(err)
     });
 };
