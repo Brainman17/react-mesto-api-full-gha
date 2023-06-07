@@ -1,5 +1,6 @@
-const user = require("../models/users");
-const { NotFoundError } = require("../errors/customErrors")
+/* eslint-disable no-shadow */
+const user = require('../models/users');
+const { NotFoundError } = require('../errors/customErrors');
 
 const getUsers = (req, res, next) => {
   user
@@ -45,7 +46,7 @@ const updateUser = (req, res, next) => {
     .findByIdAndUpdate(
       userId,
       { name: req.body.name, about: req.body.about },
-      { new: true }
+      { new: true },
     )
     .then((user) => {
       res.send({ data: user });
@@ -60,7 +61,7 @@ const updateAvatar = (req, res, next) => {
     .findByIdAndUpdate(
       userId,
       { avatar: req.body.avatar },
-      { new: true }
+      { new: true },
     )
     .then((user) => {
       res.send({ data: user });

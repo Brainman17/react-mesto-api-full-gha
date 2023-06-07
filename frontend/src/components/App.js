@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import api from "../utils/Api";
@@ -136,6 +137,8 @@ function App() {
   }
 
   function handleCardDelete(card) {
+
+    console.log(card)
     api
       .deleteInitialCards(card._id)
       .then(() => {
@@ -153,6 +156,7 @@ function App() {
     api
       .changeLikeCardStatus(card._id, isLiked)
       .then((like) => {
+        console.log(like)
         setCards((state) =>
           state.map((c) => (c._id === card._id ? like.data : c))
         );

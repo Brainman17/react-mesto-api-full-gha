@@ -1,5 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
-Joi.objectId = require('joi-objectid')(Joi)
+Joi.objectId = require('joi-objectid')(Joi);
 const { REGEX_AVATAR_LINK, REGEX_LINK } = require('../utils/regex');
 
 const signUp = celebrate({
@@ -21,20 +21,20 @@ const signIn = celebrate({
 
 const getUser = celebrate({
   params: Joi.object().keys({
-    userId: Joi.objectId().required()
+    userId: Joi.objectId().required(),
   }),
 });
 
 const updateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    about: Joi.string().required().min(2).max(30)
+    about: Joi.string().required().min(2).max(30),
   }),
 });
 
 const updateAvatar = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().required().regex(REGEX_AVATAR_LINK)
+    avatar: Joi.string().required().regex(REGEX_AVATAR_LINK),
   }),
 });
 
@@ -47,7 +47,7 @@ const createCard = celebrate({
 
 const checkIdCard = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.objectId().required()
+    cardId: Joi.objectId().required(),
   }),
 });
 

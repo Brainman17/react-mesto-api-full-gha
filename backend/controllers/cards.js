@@ -1,16 +1,16 @@
-const card = require("../models/cards");
-const { NotFoundError } = require("../errors/customErrors");
-const { STATUS_CREATED } = require("../utils/constants");
+/* eslint-disable no-shadow */
+const card = require('../models/cards');
+const { NotFoundError, ForbiddenError } = require('../errors/customErrors');
+const { STATUS_CREATED } = require('../utils/constants');
 
 const getCards = (req, res, next) => {
   card
     .find({})
-    .populate(['owner', 'likes'])
     .then((cards) => {
       res.send({ data: cards });
     })
     .catch((err) => {
-      next(err)
+      next(err);
     });
 };
 
@@ -20,26 +20,33 @@ const createCard = (req, res, next) => {
 
   card
     .create({ name, link, owner })
-    .then(card => card.populate(['owner']))
     .then((card) => {
       res.status(STATUS_CREATED).send({ data: card });
     })
     .catch((err) => {
-      next(err)
+      next(err);
     });
 };
 
 const deleteCard = (req, res, next) => {
+  const owner = req.user._id;
+
   card
-    .findByIdAndRemove(req.params.cardId)
-    .orFail(() => {
-      throw new NotFoundError("Карточка с таким id не существует!")
-    })
+    .findById(req.params.cardId)
     .then((card) => {
-      res.send({ data: card })
+      if (!card) {
+        throw new NotFoundError('Карточка с таким id не существует!');
+      }
+
+      if (card.owner.toString() !== owner) {
+        throw new ForbiddenError('Нельзя удалить чужую карточку!');
+      } return card.findByIdAndRemove(req.params.cardId);
+    })
+    .then((deleteCard) => {
+      res.send({ data: deleteCard });
     })
     .catch((err) => {
-      next(err)
+      next(err);
     });
 };
 
@@ -50,16 +57,21 @@ const likeCard = (req, res, next) => {
       {
         $addToSet: { likes: req.user._id },
       },
-      { new: true }
+      { new: true },
     )
     .orFail(() => {
-      throw new NotFoundError("Карточка с таким id не существует!")
+      throw new NotFoundError('Карточка с таким id не существует!');
     })
-    .populate(['owner', 'likes'])
-    .then((card) =>  {
-      res.send({ data: card })
+    .then((card) => {
+      res.send({ data: card });
     })
-    .catch((err) => next(err));
+    .catch((err) => {
+      if (err.code === 11000) {
+        return res
+          .status(ERROR_CONFLICT)
+          .send({ message: 'Пользователь с такой почтой уже существует' });
+      } return next(err)
+    });
 };
 
 const dislikeCard = (req, res, next) => {
@@ -69,14 +81,13 @@ const dislikeCard = (req, res, next) => {
       {
         $pull: { likes: req.user._id },
       },
-      { new: true }
+      { new: true },
     )
     .orFail(() => {
-      throw new NotFoundError("Карточка с таким id не существует!")
+      throw new NotFoundError('Карточка с таким id не существует!');
     })
-    .populate(['owner', 'likes'])
-    .then((card) =>  {
-      res.send({ data: card })
+    .then((card) => {
+      res.send({ data: card });
     })
     .catch((err) => {
       next(err);
