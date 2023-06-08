@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 const card = require('../models/cards');
 const { NotFoundError, ForbiddenError } = require('../errors/customErrors');
 const { STATUS_CREATED } = require('../utils/constants');
@@ -29,7 +28,7 @@ const createCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
-  const owner = req.user._id;
+  const userId = req.user._id;
 
   card
     .findById(req.params.cardId)
@@ -38,16 +37,14 @@ const deleteCard = (req, res, next) => {
         throw new NotFoundError('Карточка с таким id не существует!');
       }
 
-      if (card.owner.toString() !== owner) {
+      if (card.owner.toString() !== userId) {
         throw new ForbiddenError('Нельзя удалить чужую карточку!');
       } return card.findByIdAndRemove(req.params.cardId);
     })
     .then((deleteCard) => {
       res.send({ data: deleteCard });
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch(err => next(err));
 };
 
 const likeCard = (req, res, next) => {
