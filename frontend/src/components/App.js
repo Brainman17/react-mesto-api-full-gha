@@ -137,11 +137,13 @@ function App() {
   }
 
   function handleCardDelete(card) {
-
-    api
-      .deleteInitialCards(card._id)
+    // console.log(card)
+      api
+      .deleteInitialCards(card)
       .then(() => {
-        setCards((state) => state.filter((item) => item._id !== card._id));
+        setCards((state) => {
+          state.filter((item) => item._id !== card.owner);
+        });
       })
       .catch(console.log);
   }

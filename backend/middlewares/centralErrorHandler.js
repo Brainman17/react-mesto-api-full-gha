@@ -15,7 +15,7 @@ const {
   UnauthorizedError,
 } = require('../errors/customErrors');
 
-function centralErrorHandler(err, res, next) {
+function centralErrorHandler(err, req, res, next) {
   if (err.code === 11000) {
     return res
       .status(ERROR_CONFLICT)
