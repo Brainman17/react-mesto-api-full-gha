@@ -38,11 +38,11 @@ function Card({ card, title, like, src, ...props }) {
         className="card__image"
         onClick={handleCardClick}
       />
-        <button
-          className={cardDeleteButtonClassName}
-          type="button"
-          onClick={handleDeleteClick}
-        />
+        <button 
+          className={cardDeleteButtonClassName} 
+          type="button" 
+          onClick={handleDeleteClick} 
+        /> 
       <div className="card__wrapper">
         <h2 className="card__subtitle">{title}</h2>
         <div className="card__like-wrap">

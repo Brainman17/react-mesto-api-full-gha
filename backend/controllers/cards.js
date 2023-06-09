@@ -1,9 +1,9 @@
-const card = require('../models/cards');
+const Card = require('../models/cards');
 const { NotFoundError, ForbiddenError } = require('../errors/customErrors');
 const { STATUS_CREATED } = require('../utils/constants');
 
 const getCards = (req, res, next) => {
-  card
+  Card
     .find({})
     .then((cards) => {
       res.send({ data: cards });
@@ -17,7 +17,7 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
   const owner = req.user._id;
 
-  card
+  Card
     .create({ name, link, owner })
     .then((card) => {
       res.status(STATUS_CREATED).send({ data: card });
@@ -31,7 +31,7 @@ const deleteCard = (req, res, next) => {
   const owner = req.user._id;
   const { cardId } = req.params;
 
-  card
+  Card
     .findById(cardId)
     .then((card) => {
       if (!card) {
@@ -40,7 +40,7 @@ const deleteCard = (req, res, next) => {
 
       if (card.owner.toString() !== owner) {
         throw new ForbiddenError('Нельзя удалить чужую карточку!');
-      } return card.findByIdAndRemove(cardId);
+      } return Card.findByIdAndRemove(cardId);
     })
     .then((deleteCard) => {
       res.send({ data: deleteCard });
@@ -49,7 +49,7 @@ const deleteCard = (req, res, next) => {
 };
 
 const likeCard = (req, res, next) => {
-  card
+  Card
     .findByIdAndUpdate(
       req.params.cardId,
       {
@@ -67,7 +67,7 @@ const likeCard = (req, res, next) => {
 };
 
 const dislikeCard = (req, res, next) => {
-  card
+  Card
     .findByIdAndUpdate(
       req.params.cardId,
       {

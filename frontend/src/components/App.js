@@ -139,10 +139,10 @@ function App() {
   function handleCardDelete(card) {
     console.log(card)
       api
-      .deleteInitialCards(card.owner)
+      .deleteInitialCards(card._id)
       .then(() => {
         setCards((state) => {
-          state.filter((item) => item._id !== card.owner);
+          state.filter((item) => item._id !== card._id);
         });
       })
       .catch(console.log);
