@@ -137,9 +137,9 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    // console.log(card)
+    console.log(card)
       api
-      .deleteInitialCards(card)
+      .deleteInitialCards(card.owner)
       .then(() => {
         setCards((state) => {
           state.filter((item) => item._id !== card.owner);
