@@ -6,9 +6,8 @@ function Card({ card, title, like, src, ...props }) {
 
   // console.log('card =>', card);
   // console.log('currentUser =>', currentUser);
-  
-  const isOwn = card.owner._id === currentUser._id;
-  const isLiked = card.likes.some((i) => i._id === currentUser._id);
+  const isOwn = card.owner === currentUser._id;
+  const isLiked = card.likes.some((id) => id === currentUser._id);
 
   const cardLikeButtonClassName = `card__heart-button ${
     isLiked && "card__heart-button_active"
@@ -37,13 +36,11 @@ function Card({ card, title, like, src, ...props }) {
         className="card__image"
         onClick={handleCardClick}
       />
-      {isOwn && (
         <button
           className={cardDeleteButtonClassName}
           type="button"
           onClick={handleDeleteClick}
         />
-      )}
       <div className="card__wrapper">
         <h2 className="card__subtitle">{title}</h2>
         <div className="card__like-wrap">
