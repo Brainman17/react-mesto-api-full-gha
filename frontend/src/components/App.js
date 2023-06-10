@@ -142,7 +142,7 @@ function App() {
       .deleteInitialCards(card._id)
       .then(() => {
         setCards((state) => {
-          state.filter((item) => item._id !== card._id);
+          return state.filter((item) => item._id !== card._id);
         });
       })
       .catch(console.log);
