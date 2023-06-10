@@ -137,7 +137,7 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    console.log(card)
+    console.log('card', card)
       api
       .deleteInitialCards(card._id)
       .then(() => {
