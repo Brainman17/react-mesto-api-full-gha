@@ -58,10 +58,10 @@ function App() {
   }, []);
 
   const cbRegister = useCallback(async ({ email, password }) => {   
+    const data = await Auth.register(email, password);
     try {
-      const data = await Auth.register(email, password);
-
-      if (!data.error && data !== undefined) {
+      console.log(data)
+      if (!data.error && data !== undefined && !data.message) {
         navigate("/sign-in");
         setShowTooltip(true);
         ChooseInfoTooltip({
@@ -71,7 +71,8 @@ function App() {
       } else {
         throw new Error(data.error)
       }
-    } catch (e) {
+    } catch (e) {  
+      console.error(e)
         setShowTooltip(true);
         ChooseInfoTooltip({
           image: error,
