@@ -1,4 +1,4 @@
-export const BASE_URL = "http://127.0.0.1:3005";
+export const BASE_URL = "https://jegor-andreychuk.yandex.nomoredomains.monster";
 // "https://jegor-andreychuk.yandex.nomoredomains.monster";
 // "http://127.0.0.1:3005"
 
