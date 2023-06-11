@@ -34,7 +34,7 @@ function centralErrorHandler(err, req, res, next) {
       .status(ERROR_BAD_REQUEST)
       .send({ message: 'Некорректные данные' });
   }
-  return res.status(ERROR_SERVER).send({ message: 'Ошибка сервера' });
+  return res.status(ERROR_SERVER).send(err.message);
 }
 
 module.exports = centralErrorHandler;
