@@ -61,7 +61,7 @@ function App() {
     const data = await Auth.register(email, password);
     try {
       console.log(data)
-      if (!data.error && data !== undefined && !data.message) {
+      if (!data.message) {
         navigate("/sign-in");
         setShowTooltip(true);
         ChooseInfoTooltip({
