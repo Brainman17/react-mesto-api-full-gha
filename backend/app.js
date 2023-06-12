@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 const express = require('express');
 const cors = require('cors');
@@ -13,7 +14,7 @@ const { login, createUser } = require('./controllers/auth');
 const { auth } = require('./middlewares/auth');
 const celebrates = require('./middlewares/celebrates');
 const centralErrorHandler = require('./middlewares/centralErrorHandler');
-const { NotFoundError } = require('./errors/customErrors');
+const { NotFoundError } = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.connect(DB_ADDRESS, { useNewUrlParser: true });

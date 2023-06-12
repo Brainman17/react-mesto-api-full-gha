@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 require('dotenv').config();
 
 const { NODE_ENV } = process.env;

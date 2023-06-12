@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const { REGEX_AVATAR_LINK } = require('../utils/regex');
-const { UnauthorizedError } = require('../errors/customErrors');
+const { UnauthorizedError } = require('../errors/UnauthorizedError');
 
 const userSchema = new mongoose.Schema({
   name: {

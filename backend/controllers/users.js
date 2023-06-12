@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 const user = require('../models/users');
-const { NotFoundError } = require('../errors/customErrors');
+const { NotFoundError } = require('../errors/NotFoundError');
 
 const getUsers = (req, res, next) => {
   user

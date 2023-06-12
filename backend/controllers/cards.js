@@ -1,5 +1,7 @@
+/* eslint-disable no-shadow */
 const Card = require('../models/cards');
-const { NotFoundError, ForbiddenError } = require('../errors/customErrors');
+const { NotFoundError } = require('../errors/NotFoundError');
+const { ForbiddenError } = require('../errors/ForbiddenError');
 const { STATUS_CREATED } = require('../utils/constants');
 
 const getCards = (req, res, next) => {
@@ -45,7 +47,7 @@ const deleteCard = (req, res, next) => {
     .then((deleteCard) => {
       res.send({ data: deleteCard });
     })
-    .catch(err => next(err));
+    .catch((err) => next(err));
 };
 
 const likeCard = (req, res, next) => {

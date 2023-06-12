@@ -11,9 +11,15 @@ const {
 
 const {
   ForbiddenError,
+} = require('../errors/ForbiddenError');
+
+const {
   NotFoundError,
+} = require('../errors/NotFoundError');
+
+const {
   UnauthorizedError,
-} = require('../errors/customErrors');
+} = require('../errors/UnauthorizedError');
 
 function centralErrorHandler(err, req, res, next) {
   if (err.code === 11000) {
