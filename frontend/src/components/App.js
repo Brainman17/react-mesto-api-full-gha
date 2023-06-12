@@ -97,7 +97,6 @@ function App() {
         throw new Error("No User");
       }
       setIsLoggedIn(true);
-      console.log(user)
       setEmail(user.data.email);
       navigate("/");
     } catch (e) {

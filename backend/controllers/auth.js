@@ -37,6 +37,7 @@ const createUser = (req, res, next) => {
     .then((user) => res.status(STATUS_CREATED).send(user))
     .catch((err) => next(err));
 };
+
 module.exports = {
   login,
   createUser,
