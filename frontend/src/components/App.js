@@ -60,7 +60,6 @@ function App() {
   const cbRegister = useCallback(async ({ email, password }) => {   
     const data = await Auth.register(email, password);
     try {
-      console.log(data)
       if (!data.message) {
         navigate("/sign-in");
         setShowTooltip(true);
@@ -138,7 +137,6 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    console.log('card', card)
       api
       .deleteInitialCards(card._id)
       .then(() => {
