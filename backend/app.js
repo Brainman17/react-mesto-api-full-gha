@@ -35,12 +35,6 @@ app.use(express.json());
 
 app.use(requestLogger); // подключаем логгер запросов
 
-app.get('/crash-test', () => { // краш-тест
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
 // за ним идут все обработчики роутов
 app.post('/signin', celebrates.signIn, login);
 app.post('/signup', celebrates.signUp, createUser);
