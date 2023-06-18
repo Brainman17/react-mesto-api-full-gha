@@ -57,4 +57,4 @@ app.listen(PORT, () => {
   console.log(`Application listening on ${PORT}!`);
 });
 
-// ssh jegor-andreychuk@158.160.57.251
+// ssh jegor-andreychuk@51.250.5.47
